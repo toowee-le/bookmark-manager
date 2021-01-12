@@ -9,3 +9,4 @@ end
 gem "sinatra"
 gem "capybara"
 gem "rspec"
+gem "simplecov", require: false, group: :test
