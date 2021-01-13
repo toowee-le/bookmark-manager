@@ -37,3 +37,20 @@ I want my bookmarks to only be accessed by me
 
 ## Domain Model
 ![Bookmark Manager domain model](domain-model-bookmark-manager.jpg)
+
+## Installation
+To set up the database locally:
+```
+// In the command line, connect to psql
+psql
+
+// Create the database using the psql command
+CREATE DATABASE bookmark_manager;
+
+// Connect to the database using the psql command
+\c bookmark_manager;
+
+// Run the query
+01_create_bookmarks_table.sql
+
+```
