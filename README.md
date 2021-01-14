@@ -8,7 +8,7 @@ I want to see a list of my bookmarks
 
 As a user
 So that I can save an interesting article I read online
-I want to add the site's address and title to bookmark manager
+I want to add the site's address and title to my list of bookmarks
 
 As a user
 So I can only keep a list of websites that I want to refer back to
