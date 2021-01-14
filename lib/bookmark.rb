@@ -2,7 +2,12 @@ require 'pg'
 
 class Bookmark
   def self.all
-    connection = PG.connect( dbname: 'bookmark_manager' )
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect( dbname: 'bookmark_manager_test' )
+    else
+      connection = PG.connect( dbname: 'bookmark_manager' )
+    end
+    
     data = connection.exec( 'SELECT * FROM bookmarks' )
     data.collect { |bookmark| bookmark['url']}
   end
