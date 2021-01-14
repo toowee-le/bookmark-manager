@@ -9,6 +9,11 @@ class Bookmark
     end
     
     data = connection.exec( 'SELECT * FROM bookmarks' )
-    data.collect { |bookmark| bookmark['url']}
+    # Return the site name and url only
+    data.map do |hash|
+      hash.select do |key, value|
+        ["name", "url"].include? key
+      end
+    end
   end
 end
