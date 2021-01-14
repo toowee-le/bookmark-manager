@@ -1,3 +1,5 @@
+ENV['ENVIRONMENT'] = 'test'
+
 require 'simplecov'
 SimpleCov.start
 
