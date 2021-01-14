@@ -1,8 +1,9 @@
+require 'pg'
+
 class Bookmark
   def self.all
-    [
-      "www.google.com",
-      "www.bbc.com"
-    ]
+    connection = PG.connect( dbname: 'bookmark_manager' )
+    data = connection.exec( 'SELECT * FROM bookmarks' )
+    data.collect { |bookmark| bookmark['url']}
   end
 end
