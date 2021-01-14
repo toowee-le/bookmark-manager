@@ -38,19 +38,26 @@ I want my bookmarks to only be accessed by me
 ## Domain Model
 ![Bookmark Manager domain model](domain-model-bookmark-manager.jpg)
 
-## Installation
-To set up the database locally:
+## How to use
+
+### Set up the project locally
+Clone this repository and install all the dependencies by running:
+
 ```
-// In the command line, connect to psql
+bundle install
+```
+
+To set up the databases, connect to psql:
+
+```
 psql
+```
 
-// Create the database using the psql command
-CREATE DATABASE bookmark_manager;
-
-// Connect to the database using the psql command
-\c bookmark_manager;
-
-// Run the query
-01_create_bookmarks_table.sql
+Create the 'bookmark_manager' and 'bookmark_manager_test' databases:
 
 ```
+CREATE DATABASE bookmark_manager;
+CREATE DATABASE bookmark_manager_test;
+```
+
+To create the tables, connect to each database in psql and run the SQL scripts in the `db/migrations` folder in the given order
