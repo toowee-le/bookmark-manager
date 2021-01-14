@@ -1,5 +1,3 @@
-require_relative './setup_test_database'
-
 # Set the environment variable to test
 ENV['ENVIRONMENT'] = 'test'
 
@@ -8,12 +6,14 @@ SimpleCov.start
 
 ENV['RACK_ENV'] = 'test'
 
+# Bring in the contents of the app.rb file
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 # Require testing gems
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require_relative './setup_test_database'
 
 # Tell Capybara to talk to the BookmarkManager model
 Capybara.app = BookmarkManager
