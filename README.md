@@ -1,5 +1,7 @@
 # Bookmark Manager
 
+Makers Week 6 project - building a web app that stores web bookmarks in a database.
+
 ## User Stories
 ```
 As a user
@@ -7,7 +9,7 @@ So that I can refer back to websites I regularly visit
 I want to see a list of my bookmarks
 
 As a user
-So that I can save an interesting article I read online
+So that I can save an interesting article to retrieve at a later time
 I want to add the site's address and title to my list of bookmarks
 
 As a user
@@ -53,11 +55,11 @@ To set up the databases, connect to psql:
 psql
 ```
 
-Create the 'bookmark_manager' and 'bookmark_manager_test' databases:
+Create the `bookmark_manager` and `bookmark_manager_test` databases:
 
 ```
 CREATE DATABASE bookmark_manager;
 CREATE DATABASE bookmark_manager_test;
 ```
 
-To create the tables, connect to each database in psql and run the SQL scripts in the `db/migrations` folder in the given order
+To create the tables, connect to each database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order
