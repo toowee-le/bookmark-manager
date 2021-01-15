@@ -6,7 +6,6 @@ feature "Add bookmarks" do
     fill_in("Site URL", with: "http://www.google.com")
     click_button("Add")
 
-    expect(page).to have_content("Google")
-    expect(page).to have_content("http://www.google.com")
+    expect(page).to have_link("Google", href: "http://www.google.com")
   end
 end
