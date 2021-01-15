@@ -10,7 +10,7 @@ I want to see a list of my bookmarks
 
 As a user
 So that I can save an interesting article to retrieve at a later time
-I want to add the site's address and title to my list of bookmarks
+I want to add the site's url and title to my list of bookmarks
 
 As a user
 So I can only keep a list of websites that I want to refer back to
