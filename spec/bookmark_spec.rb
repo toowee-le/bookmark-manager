@@ -11,8 +11,20 @@ describe Bookmark do
 
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include("name" => "Google", "url" => "http://www.google.com")
-      expect(bookmarks).to include("name" => "Makers Academy", "url" => "http://www.makersacademy.com")
+      expect(bookmarks).to include(name: "Google", url: "http://www.google.com")
+      expect(bookmarks).to include(name: "Makers Academy", url: "http://www.makersacademy.com")
+    end
+  end
+
+  describe ".create" do
+    it "creates a new bookmark" do
+      bookmark = Bookmark.create(name: "Google", url: "http//www.google.com")
+
+      bookmarks = Bookmark.all
+
+      # expect(bookmark.name).to eq "Google"
+      # expect(bookmark.url).to eq "http://www.google.com"
+      expect(bookmarks).to include(name: "Google", url:"http://www.google.com")
     end
   end
 end
