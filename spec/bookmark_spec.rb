@@ -4,26 +4,31 @@ describe Bookmark do
   describe ".all" do
     it "returns bookmark list" do
       # Connect to the test database
-      connection = PG.connect( dbname: 'bookmark_manager_test' )
+      connection = PG.connect(dbname: 'bookmark_manager_test')
 
       # Add test data
-      connection.exec( "INSERT INTO bookmarks (name, url) VALUES('Google', 'http://www.google.com');" )
-      connection.exec( "INSERT INTO bookmarks (name, url) VALUES('Makers Academy', 'http://www.makersacademy.com');" )
+      bookmark = Bookmark.create(name: "Google", url: "http://www.google.com")
+      Bookmark.create(name: "Makers Academy", url: "http://www.makersacademy.com")
 
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include(name: "Google", url: "http://www.google.com")
-      expect(bookmarks).to include(name: "Makers Academy", url: "http://www.makersacademy.com")
-    end
+      expect(bookmarks.length).to eq 2
+      expect(bookmarks.first).to be_a Bookmark
+      expect(bookmarks.first.id).to eq bookmark.id
+      expect(bookmarks.first.name).to eq "Google"
+      expect(bookmarks.first.url).to eq "http://www.google.com"
+    end 
   end
 
   describe ".create" do
     it "creates a new bookmark" do
-      bookmark = Bookmark.create(name: "Google", url: "http//www.google.com")
-
-      bookmarks = Bookmark.all
-
-      expect(bookmarks).to include(name: "Google", url:"http://www.google.com")
+      bookmark = Bookmark.create(name: "Google", url: "http://www.google.com")
+      persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id}")
+   
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq persisted_data.first['id']
+      expect(bookmark.name).to eq "Google"
+      expect(bookmark.url).to eq "http://www.google.com"
     end
   end
 end
