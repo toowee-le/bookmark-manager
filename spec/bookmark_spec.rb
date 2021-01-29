@@ -1,4 +1,5 @@
 require 'Bookmark'
+require 'database_helpers.rb'
 
 describe Bookmark do
   describe ".all" do
@@ -23,10 +24,10 @@ describe Bookmark do
   describe ".create" do
     it "creates a new bookmark" do
       bookmark = Bookmark.create(name: "Google", url: "http://www.google.com")
-      persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id}")
+      persisted_data = persisted_data(id: bookmark.id)
    
       expect(bookmark).to be_a Bookmark
-      expect(bookmark.id).to eq persisted_data.first['id']
+      expect(bookmark.id).to eq persisted_data['id']
       expect(bookmark.name).to eq "Google"
       expect(bookmark.url).to eq "http://www.google.com"
     end
