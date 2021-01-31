@@ -11,9 +11,11 @@ feature 'Deleting bookmarks' do
     expect(page).to have_link(first_bookmark.name, href: first_bookmark.url)
     expect(page).to have_link(second_bookmark.name, href: second_bookmark.url)
     
-    within "#bookmark-#{first_bookmark.id}" do
-      click_button 'Delete'
-    end
+    # within "#bookmark-#{first_bookmark.id}" do
+    #   click_button 'Delete'
+    # end
+
+    first('.bookmark').click_button 'Delete'
 
     expect(current_path).to eq '/bookmarks'
     expect(page).not_to have_link(first_bookmark.name, href: first_bookmark.url)

@@ -42,4 +42,29 @@ describe Bookmark do
       expect(Bookmark.all).not_to include(bookmark)
     end
   end
+
+  describe ".update" do
+    it "updates bookmark with given data" do
+      bookmark = Bookmark.create(name: "Makers Academy", url: "http://www.makersacademy.com")
+      updated_bookmark = Bookmark.update(id: bookmark.id, name: "Makers", url: "http://www.makers.tech")
+  
+      expect(updated_bookmark).to be_a Bookmark
+      expect(updated_bookmark.id).to eq bookmark.id
+      expect(updated_bookmark.name).to eq "Makers"
+      expect(updated_bookmark.url).to eq "http://www.makers.tech"
+    end
+  end
+
+  describe ".find" do
+    it "returns the requested bookmark object" do
+      bookmark = Bookmark.create(name: "Makers Academy", url: "http://www.makersacademy.com")
+
+      result = Bookmark.find(id: bookmark.id)
+
+      expect(result).to be_a Bookmark
+      expect(result.id).to eq bookmark.id
+      expect(result.name).to eq "Makers Academy"
+      expect(result.url).to eq "http://www.makersacademy.com"
+    end
+  end
 end
