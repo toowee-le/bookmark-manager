@@ -1,4 +1,4 @@
-require 'Bookmark'
+require 'bookmark'
 require 'database_helpers.rb'
 
 describe Bookmark do
